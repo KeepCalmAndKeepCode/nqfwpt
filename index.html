@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+  <title>农情服务平台</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <link rel="stylesheet" href="./swiper-4.3.3/css/swiper.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="headerCon">
+      <span>您好，欢迎访问农情服务平台！</span>
+      <div id="view"></div>
+      <script id="loginRegist" type="text/html">
+        <span class="layui-breadcrumb breadcrumbHeader" lay-separator="|" style="visibility: visible;">
+          {{# if((userData.user_id == undefined) && (userData.name == undefined) ) { }}
+          <a id="login" onclick="login()">登录</a>
+          <span lay-separator="">|</span>
+          <a id="register" onclick="regist()">注册</a>
+          {{# } else { }}
+          <span> {{ userData.user_name || userData.name }} </span>
+          <span lay-separator="">|</span>
+          <a id="userInfo" onclick="userInfo()">个人资料</a>
+          <span lay-separator="">|</span>
+          <a id="exit" onclick="exit()">退出登录</a>
+          {{# } }}
+        </span>
+      </script>
+    </div>
+    <div class="climate">
+      <div>
+        <!-- <span class="climateVerticalAlign"></span> -->
+        <img src="./img/logo.jpg" alt="">
+        <iframe id="iframe" src="http://i.tianqi.com/index.php?c=code&id=19&icon=1&temp=1&num=3" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbarCon">
+      <span class="layui-breadcrumb">
+        <a id="navbarClick" href="" >首页</a>
+        <a href="./NewProduct.html" target="view_window">新品推介</a>
+        <a href="./bchzzzd.html" target="view_window">病虫害诊断</a>
+        <a onclick="queryTdlz()">土地流转</a>
+        <a href="./nqyjList.html" target="view_window">农情预警</a>
+        <a href="./expert_category.html" target="view_window">专家咨询</a>
+      </span>
+    </div>
+  </div>
+  <div class="banner">
+    <img src="./img/banner.png" alt="">
+    <!-- <div class="gprs">
+      <div class="gprsCon">
+        <!-- <div class="yjxx">
+          <div id="yjxxTplCon"></div>
+          <script id="yjxxTpl" type="text/html">
+            <div>
+              <img src="./img/icon/jinggao.png" class="warningPic" alt="" srcset="">
+              <span class="warningTit">{{ yqyjData.content }}</span>
+              </br>
+            </div>
+            <img src="./img/icon/yaoshi.png" class="warningIcon" alt="">
+            <span>{{ yqyjData.tag }}</span>
+            <img src="./img/icon/shijian.png" class="warningIcon" alt="">
+            <span>{{ yqyjData.created_at }}</span>
+          </script>
+        </div> 
+        <!-- <div class="gprsConLeft" id="weatherTplCon"></div>
+        <script id="weather" type="text/html">
+          <div class="gprsConLeftTop">
+            <span class="ssd">{{ weatherData.now_temperature }}℃</span>
+            <div class="weatherPic">
+              <span class="tq">{{ weatherData.day_weather }}</span>
+              <div>
+                <img src="{{ weatherData.day_weather_pic }}" alt="">
+                <div>{{ weatherData.created_at }}</div>
+              </div>
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+          <div class="gprsConLeftMid">
+            <span id="city"></span>
+            <img src="./img/icon/fengxiang.png" alt="" srcset="">
+            <span>{{ weatherData.wind_direction + weatherData.wind_power }}</span>
+            <img src="./img/icon/shuidi.png" alt="" srcset="">
+            <span>空气质量{{weatherData.aqi_description}}</span>
+            <img src="./img/icon/kongqizhiliang.png" alt="" srcset="">
+            <span>PM2.5 {{weatherData.aqi_description}}</span>
+            <div style="clear: both;"></div>
+          </div>
+        </script>
+        <div style="clear: both;"></div>
+      </div>
+    </div> -->
+  </div>
+  <!-- <div class="newProduct">
+    <div class="newProductTit">新品推介</div>
+    <div class="swiper-container">
+      <div class="swiper-wrapper" id="xptjTplCon">
+        <script type="text/html" id="xptjTpl">
+          {{# layui.each(xptjData, function(index, item){ }}
+          <div class="swiper-slide" onclick="getNewProductInfo( {{index}},xptjData[{{index}}] )">
+            <img src="{{ item.photo[0] }}" alt="">
+            <div>{{item.varietyname}}</div>
+          </div>
+          {{# }); }}
+        </script>
+      </div>
+    </div>
+    <div class="swiper-button-prev">
+      < </div> 
+        <div class="swiper-button-next"> > </div>
+    </div>
+  </div> -->
+  <div class="main1">
+    <div class="main1Con">
+      <!-- 病虫害诊断 -->
+      <div class="bchzd">
+        <!-- <div class="bchzdTit">病虫害诊断</div>
+        <div class="duofabch">
+          <span>●</span>当前多发病虫害
+        </div>
+        <div class="bchMain" id="duofabchTplCon">
+          <script type="text/html" id="duofabchTpl">
+            <div class="bchMainLeft" onclick="duofabchLayer( diseasesData[0] )">
+                <div>{{ diseasesData[0].title }}</div>
+              </div>
+              <div class="bchMainRight" onclick="duofabchLayer( diseasesData[1] )">
+                <div>{{ diseasesData[1].title }}</div>
+              </div>
+              <div style="clear: both;"></div>
+            </script>
+        </div>
+        <div class="bchk">
+          <span>●</span>常见病虫害库
+        </div>
+        <div class="bchkMain" id="bchTplCon">
+          <script type="text/html" id="bchTpl">
+            {{# layui.each(nzwData, function(index, item){ }}
+              <div onclick="bchQuery({{index}})" cropname="{{item.cropname}}">
+                <img src="{{'http://zs.sjznm.gov.cn:50047' + item.photo}}">
+                <div>{{item.cropname}}</div>
+              </div>
+              {{# }); }}
+            </script>
+        </div>
+        <div class="zzzd">
+          <span>●</span>自主诊断
+        </div>
+        <input type="text" placeholder="请输入病虫害关键字" id="bchzd">
+        <div class="zdbtn" onclick="bchQuery()">进行诊断</div> -->
+        <div class="yjxx2">
+          <div class="yjxxTit2">农情预警</div>
+          <div id="yjxx2TplCon"></div>
+          <script type="text/html" id="yjxx2Tpl">
+            {{# layui.each(yjxxData, function(index, item){ }}
+              <a class="" href="{{ item.url }}" target="view_window">
+                <span class="yjxx2Left">{{ item.title }}</span>
+                <span class="yjxx2Right">{{ item.publishTime.split(" ")[0] }}</span>
+              </a>
+            {{# }); }}
+          </script>
+          <!-- <div class="">
+              <span class="yjxx2Left">预警地区:</span>
+              <span>{{ yqyjData.target_area }}</span>
+            </div>
+            <div class="">
+              <span class="yjxx2Left">来源:</span>
+              <span>{{ yqyjData.raise_from }}</span>
+            </div>
+            <div class="">
+              <span class="yjxx2Left">关键字:</span>
+              <span>{{ yqyjData.tag }}</span>
+            </div>
+            <div class="">
+              <span class="yjxx2Left">创建时间:</span>
+              <span>{{ yqyjData.created_at }}</span>
+            </div>
+            <div class="">
+              <p>{{ yqyjData.content}}</p>
+            </div>
+          </div> -->
+          <div class="ask">
+            提问题
+          </div>
+          <form class="layui-form">
+            <div class="layui-form-item">
+              <label class="layui-form-label">农作物类型</label>
+              <div class="layui-input-block">
+                <select name="cat_id" lay-verify="required" id="zzwTplCon"></select>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">标题</label>
+              <div class="layui-input-block">
+                <input type="text" name="title" placeholder="请输入标题" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">描述</label>
+              <div class="layui-input-block">
+                <textarea name="content" placeholder="请输入描述" class="layui-textarea"></textarea>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">上传图片</label>
+              <div class="layui-input-block">
+                <button type="button" class="layui-btn" id="test1">
+                  <i class="layui-icon">&#xe67c;</i>选择
+                </button>
+                <div id="picCon">
+                </div>
+              </div>
+            </div>
+
+            <div class="layui-form-item">
+              <label class="layui-form-label">关键字</label>
+              <div class="layui-input-block">
+                <input type="text" name="tag" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+
+            <div class="layui-form-item area">
+              <label class="layui-form-label">发生区域</label>
+              <div class="layui-input-block">
+                <select name="area_code1" lay-filter="area_code1" lay-verify="required" id="province"></select>
+                <select name="area_code" lay-verify="required" id="askCity"></select>
+              </div>
+            </div>
+
+            <div class="layui-form-item issueAsk">
+              <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="issueAsk">发布问题</button>
+              </div>
+            </div>
+          </form>
+          <div class="askListTit">
+            <span>●</span>提问列表
+          </div>
+          <div class="askList" id="askListTplCon">
+            <script type="text/html" id="askListTpl">
+              {{# layui.each(quertionsData, function(index, item){ }}
+              <div class="" onclick="questionInfo(quertionsData[{{index}}] )">{{ item.title }}</div>
+              {{# }); }}
+            </script>
+          </div>
+        </div>
+      </div>
+      <!-- 农情资讯 -->
+      <div class="nqzx">
+        <div class="nqzxTit">农情资讯</div>
+        <!-- 种植物信息咨询 -->
+        <div class="zzwxxzx">
+          <div class="zzwxxzxTit">种植物信息咨询</div>
+          <div id="zzwxxzxTplCon"></div>
+          <script type="text/html" id="zzwxxzxTpl">
+            <div class="zzwxxzxMain" onclick="getNewProductInfo( 0 , xptjData[0])">
+              <img src="{{xptjData[0].photo || xptjData[0].photo[0]}}" alt="">
+              <div>
+                <div>{{ xptjData[0].varietyname }}</div>
+                <p>{{ xptjData[0].varietyfeatures || '暂无' }}</p>
+              </div>
+            </div>
+            {{# layui.each(xptjData, function(index, item){ }}
+              <div class="zzwxxzxList" onclick="getNewProductInfo( {{index}} , xptjData[{{ index }}])">
+                【{{ item.varietyname }}】{{ item.varietyfeatures || '暂无描述' }}
+              </div>
+            {{# }); }}
+            <!-- <div class="zzwxxzxMain" onclick="getNewProductInfo( 1 , xptjData[1])">
+              <img src="{{xptjData[1].photo[1] || xptjData[1].photo[0]}}" alt="">
+              <div>
+                <div>{{ xptjData[1].varietyname }}</div>
+                <p>{{ xptjData[1].varietyfeatures || '暂无' }}</p>
+              </div>
+            </div> -->
+          </script>
+        </div>
+        <!-- 土地流转 -->
+        <div class="tdlz" id="">
+          <div class="tdlzTit">土地流转</div>
+          <div class="tdlzHead">
+            <div class="issueQuery">
+              <div>
+                <span onclick="issueTdlz()">我要发布土地</span>
+                <span style="margin-top:20px;" onclick="queryTdlz()">我要查询土地</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div id="tdlzListTplCon"></div>
+          <script type="text/html" id="tdlzListTpl">
+            {{# layui.each(tdlzData, function(index, item){ }}
+              <div class="tdlzList" onclick="tdlzLayer( tdlzData[{{index}}] )">
+                <div class="tdlzListCon">
+                  <div class="listLeft">
+                    <img src="{{item.thumbs[0]}}" alt="" srcset="">
+                    <div>{{item.created_at}}</div>
+                  </div>
+                  <div class="listMid">
+                    <div class="listMidTop">{{item.area + item.land_description}}</div>
+                    <div class="listMidMid">
+                      <span>{{item.land_type}}</span>
+                      <span class="listMidType">{{item.deal_type}}</span>
+                    </div>
+                    <div class="listMidBot">
+                      <span class="listMidBotLeft">{{item.math_area}}</span>平方米
+                      <span class="listMidBotRight">{{item.land_expire}}</span>年
+                    </div>
+                  </div>
+                  <div class="listRight">
+                    <div class="listRightCity">{{item.area}}</div>
+                    <div class="listRightPrice">
+                      <span>{{ item.price }}</span>元
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            {{# }); }}
+          </script>-->
+          <!-- <div id="tdlzTplCon"></div>
+          <script id="tdlzTpl" type="text/html">
+            {{# layui.each(data, function(index, item){ }}
+            <div class="">
+              所在区域 : {{ item.area }} 所在区域邮编 : {{ item.area_no }} 土地面积（平方米）: {{ item.math_area }} 价格（元）: {{ item.price }} 土地类型 : {{ item.land_type
+              }} 流转类型 : {{ item.deal_type }} 土地产权期限（年）: {{ item.area }} 土地详情描述 : {{ item.land_description }} 联系方式 : {{ item.contact
+              }} 状态 : {{ item.status }}
+            </div>
+            {{# }); }}
+          </script> -->
+        </div>
+      </div>
+      <!-- 舆情列表 -->
+      <div class="yqlb">
+        <div class="yqlbTit">价格行情</div>
+        <div class="ncpjg">
+          <div class="ncpjgTit">农产品价格
+            <div class="ncpjgMore" onclick="ncpjgMore()">查看更多 > </div>
+          </div>
+          <ul id="ncpjgTplCon">
+            <li>
+              <span class="ncpjgType">猪肉（白条猪）</span>
+              <span class="ncpjgPrice">26元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">小白菜</span>
+              <span class="ncpjgPrice">4元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">荷兰豆</span>
+              <span class="ncpjgPrice">9元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">生菜</span>
+              <span class="ncpjgPrice">8元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">西兰花</span>
+              <span class="ncpjgPrice">3元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">苦瓜</span>
+              <span class="ncpjgPrice">5元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">菜瓜</span>
+              <span class="ncpjgPrice">3元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <li>
+              <span class="ncpjgType">莲藕</span>
+              <span class="ncpjgPrice">5元/公斤</span>
+              <span class="ncpjgSite">云南通海金山蔬菜批发市场</span>
+            </li>
+            <script type="text/html" id="ncpjgTpl">
+              {{# layui.each(ncpjgData, function(index, item){ }}
+                <!-- <li onclick="ncpjgLayer( ncpjgData[{{index}}] )"> -->
+                <li>
+                  <span class="ncpjgType">{{item.Agricuture}}</span>
+                  <span class="ncpjgPrice">{{item.AgriPrice}}元/公斤</span>
+                  <span class="ncpjgSite">{{item.AgriMarketName}}</span>
+                </li>
+                {{# }); }}
+              </script>
+          </ul>
+
+        </div>
+        <div class="nzjg">
+          <div class="nzjgTit">农资价格
+            <div class="ncpjgMore" onclick="ncpjgMore()">查看更多 > </div>
+          </div>
+          <ul>
+            <li>8月12日部分企业尿素出厂价格</li>
+            <li>8月11日部分企业尿素出厂价格</li>
+            <li>8月10日部分企业尿素出厂价格</li>
+            <li>8月9日部分企业尿素出厂价格</li>
+            <li>8月8日部分企业尿素出厂价格</li>
+            <li>8月7日部分企业尿素出厂价格</li>
+            <li>8月6日部分企业尿素出厂价格</li>
+            <li>8月5日部分企业尿素出厂价格</li>
+          </ul>
+        </div>
+
+        <!-- <div class="schq">
+            <div class="schqTit">市场行情</div>
+            <ul id="schqTplCon">
+              <script type="text/html" id="schqTpl">
+                {{# layui.each(schqData, function(index, item){ }}
+                <li onclick="schqLayer( schqData[{{index}}] )">
+                  <span class="schqLeft">2018上半年番茄现状</span>
+                  <span>2018-7-26</span>
+                </li>
+                {{# }); }}
+              </script>
+              <li>
+                <span class="schqLeft">2018上半年番茄现状</span>
+                <span>2018-7-26</span>
+              </li>
+              <li>
+                <span class="schqLeft">2017马铃薯现状</span>
+                <span>2017-12-25</span>
+              </li>
+              <li>
+                <span class="schqLeft">冬马铃薯新品种"爱得"</span>
+                <span>2017-10-26</span>
+              </li>
+              <li>
+                <span class="schqLeft">红薯大丰收价格喜人</span>
+                <span>2017-9-15</span>
+              </li>
+              <li>
+                <span class="schqLeft">马铃薯种植开辟中宁移</span>
+                <span>2017-8-30</span>
+              </li>
+              <li>
+                <span class="schqLeft">贵州省一跃成为我国</span>
+                <span>2017-7-25</span>
+              </li>
+              <li>
+                <span class="schqLeft">美国农业部:2018年市场</span>
+                <span>2017-6-26</span>
+              </li>
+              <li>
+                <span class="schqLeft">大兴安岭打造全国闻名</span>
+                <span>2016-6-08</span>
+              </li>
+            </ul>
+          </div> -->
+      </div>
+      <!-- 政策法规&&新技术信息 -->
+      <div class="zcfgXjsxx">
+        <div class="zcfgXjsxxTit">服务资讯</div>
+        <div class="zcfg">
+          <div class="zcfgTit">政策法规
+            <div class="zcfgMore" onclick="zcfgMore()">查看更多 > </div>
+          </div>
+          <ul id="zcfgTplCon">
+            <script type="text/html" id="zcfgTpl">
+              {{# layui.each(zcfgData, function(index, item){ }}
+                <li onclick="zcfgSkip( zcfgData[{{index}}] )">
+                  <span class="zcfgLeft">{{ item.Title }}</span>
+                  <span>{{ item.CreateDate.split(" ")[0] }}</span>
+                </li>
+              {{# }); }}
+            </script>
+          </ul>
+
+        </div>
+        <div class="jsxx">
+          <div class="jsxxTit">新技术信息
+            <div class="jsxxMore" onclick="jsxxMore()">查看更多 > </div>
+          </div>
+          <ul id="jsxxTplCon">
+            <script type="text/html" id="jsxxTpl">
+              {{# layui.each(jsxxData, function(index, item){ }}
+                <li onclick="jsxxSkip( jsxxData[{{index}}] )">{{item.title}}</li>
+              {{# }); }}
+            </script>
+          </ul>
+        </div>
+      </div>
+      <!-- 专家答疑 -->
+      <div class="zjdy">
+        <div class="zjdyTit">
+          知名专家圈子
+          <a href="./expert_category.html" style="float: right;">查看更多 > </a>
+        </div>
+        <div class="zjdyMain">
+          <div class="zjdyLi">
+            <img src="./img/zhuanjia (1).jpg" alt="">
+            <div class="">
+              <div class="zjdyLiTit">王振林</div>
+              <div>研究种子管理</div>
+              <div>擅长病虫害预测预报</div>
+              <div>擅长农作物营养诊断</div>
+            </div>
+          </div>
+          <div class="zjdyLi">
+            <img src="./img/zhuanjia (2).jpg" alt="">
+            <div class="">
+              <div class="zjdyLiTit">韩东升</div>
+              <div>研究种子管理</div>
+              <div>擅长病虫害预测预报</div>
+              <div>擅长农作物营养诊断</div>
+            </div>
+          </div>
+          <div class="zjdyLi">
+            <img src="./img/zhuanjia (3).jpg" alt="">
+            <div>
+              <div class="zjdyLiTit">华勇林</div>
+              <div>研究种子管理</div>
+              <div>擅长病虫害预测预报</div>
+              <div>擅长农作物营养诊断</div>
+            </div>
+          </div>
+          <div class="zjdyLi">
+            <img src="./img/zhuanjia (4).jpg" alt="">
+            <div>
+              <div class="zjdyLiTit">李建设</div>
+              <div>研究种子管理</div>
+              <div>擅长病虫害预测预报</div>
+              <div>擅长农作物营养诊断</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="">
+      <div>北京农信通科技有限公司</div>
+      <div>京ICP备06042345号-15</div>
+      <div>Copyright © 2006-2018</div>
+    </div>
+  </div>
+  </div>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./swiper-4.3.3/js/swiper.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+
+<script src="./js/index.js"></script>
+<script src="./js/logRegCom.js"></script>
+<script src="./js/indexAjax.js"></script>
+
+</html>

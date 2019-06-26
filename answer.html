@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+  <title>农情服务平台</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <link rel="stylesheet" href="./css/answer.css">
+</head>
+
+<body style="background:#f6f6f6;">
+  <div class="header">
+    <div class="headerCon">
+      <span>您好，欢迎访问农情服务平台！</span>
+      <div id="view"></div>
+      <script id="loginRegist" type="text/html">
+        <span class="layui-breadcrumb breadcrumbHeader" lay-separator="|" style="visibility: visible;">
+          {{# if((userData.name == undefined) && (userData.user_name == undefined)){ }}
+          <a id="login" onclick="login()">登录</a>
+          <span lay-separator="">|</span>
+          <a id="register" onclick="regist()">注册</a>
+          {{# } else { }}
+          <span> {{ userData.name || userData.user_name }} </span>
+          <span lay-separator="">|</span>
+          <a id="userInfo" onclick="userInfo()">个人资料</a>
+          <span lay-separator="">|</span>
+          <a id="exit" onclick="exit()">退出登录</a>
+          {{# } }}
+        </span>
+      </script>
+    </div>
+    <div class="climate">
+      <div>
+        <img src="./img/logo.jpg" alt="">
+        <iframe id="iframe" src="http://i.tianqi.com/index.php?c=code&id=19&icon=1&temp=1&num=3" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbarCon">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a onclick="fbpz()">发布品种</a>
+        <a href="./bchzzzd.html">病虫害诊断</a>
+        <a onclick="queryTdlz()">土地流转</a>
+        <a onclick="yqyjfb()">舆情预警</a>
+        <a id="navbarClick" href="./ask.html">专家咨询</a>
+      </span>
+    </div>
+
+  </div>
+  <!-- question:  -->
+  <div class="brief_banners">
+    <div class="banners_contant">
+
+      <div class="issues">
+        <div class="o">
+          <div class="img">
+            <img src="img/hehua.jpg" alt="">
+          </div>
+          <span>一个人名</span>
+          <span>联系方式</span>
+        </div>
+
+        <div class="question">
+          <span>花生“生锈”了</span>
+          <span>上边长了很多类似铁锈的东西，怎么办？</span>
+        </div>
+
+        <div class="question_r">
+          <div class="img">
+            <img src="./img/icon/ask.png" alt="">
+          </div>
+          <div class="editing_time">
+            <span>编辑于2018-7-14</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="main0 ">
+      <div class="banners_contant ">
+        <div class="issues">
+          <div class="o">
+            <div class="img">
+              <img src="img/hehua.jpg" alt="">
+            </div>
+          </div>
+
+          <div class="question">
+            <span>王专家</span>
+            <span>花生等农作物类认证专家</span>
+          </div>
+
+          <div class="question_r">
+            <div class="img">
+              <img src="./img/icon/ask.png" alt="">
+            </div>
+            <div class="editing_time">
+              <span>编辑于2018-7-14</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="main1">
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;落花生（学名：Arachis hypogaea
+            Linn.）：蔷薇目、豆科，落花生属的一年生草本植物。根部有丰富的根瘤；茎和分、褐色或黄色的，这与花生的品种及土质有关。花生果壳内的种子通称为花生米或花生仁，由种皮、</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子叶和胚三部分组成。种皮的颜色为淡褐色或浅红色。种皮内为两片。是生产食用植物油的原料，花生果仁中提取油脂呈透明、淡黄色，味芳香，种子含脂肪油40-50%，含氮物质20-30%，淀粉8-21%，纤维素2-5%，水分5-8%，灰分2-4%，维生素等。
+            [1] 花生米可以加工成副食品。</p>
+          <div class="img">
+            <img src="img/nzwPic2.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main2">
+      <div class="margin">
+        <div class="issues">
+          <div class="o">
+            <div class="img">
+              <img src="img/hehua.jpg" alt="">
+            </div>
+          </div>
+          <div class="question">
+            <span>一个人名</span>
+            <span>很多的联系方式</span>
+          </div>
+        </div>
+        <div class="editor">
+          <iframe src="editor/_examples/completeDemo.html" width="" height="" frameborder="0" scrolling="no" style="height:500px;width:1200px;"></iframe>
+          <div class="submission">
+            <button type="button" name="button">提交回答</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="">
+      <div>北京农信通科技有限公司</div>
+      <div>京ICP备06042345号-15</div>
+      <div>Copyright © 2006-2018</div>
+    </div>
+  </div>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+
+<script src="./js/logRegCom.js"></script>
+<script src="./js/answer.js"></script>
+
+</html>

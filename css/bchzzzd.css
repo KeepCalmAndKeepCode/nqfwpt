@@ -1,0 +1,125 @@
+*{
+  box-sizing: border-box;
+}
+
+.header{
+  background-color: #fff;
+  height: 100px;
+  line-height: 100px;
+  width: 100%;
+  min-width: 1140px;
+}
+.headerCon{
+  width: 1140px;
+  margin: 0 auto;
+  height: 100%;
+}
+.headerCon>img{
+  width: 200px;
+}
+.headerCon>div{
+  float: right;
+  height: 100%;
+  line-height: 50px;
+  cursor: pointer;
+}
+.headerCon .breadcrumbHeader{
+  height: 100px;
+}
+.breadcrumbHeader>a{
+  width: 56px !important;
+}
+.breadcrumbHeader>*{
+  visibility: visible !important;
+}
+.navbar{
+  width: 100%;
+  height: 50px;
+  background-color: #faf9f9;
+  min-width: 1140px;
+}
+.navbarCon{
+  width: 1140px;
+  margin: 0 auto;
+  height: 100%;
+}
+.layui-breadcrumb{
+  height: 50px;
+  display: block;
+  line-height: 50px;
+  width: 100%;
+}
+.layui-breadcrumb>a{
+  width:9%;
+  text-align: center;
+  display: inline-block;
+}
+.navbarCon>div{
+  width: 159px;
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.TypeSelect,.SymptomsSelect,.SymptomutfSelect,.SymptomsSection{
+  width: 1140px;
+  margin: 0 auto;
+  border-bottom: #EEEEEE 1px dashed;
+}
+.TypeSelectTit,.TypeSelectType, .SymptomsSelectTit,.SymptomsSelectType{
+  display: inline-block;
+}
+.TypeSelectTit,.SymptomsSelectTit{
+  margin-right: 40px;
+}
+.TypeSelectType>span,.SymptomsSelectType>span,.SymptomutfSelect>span,.SymptomsSection a{
+  display: inline-block;
+  margin:10px;
+  cursor: pointer;
+  padding: 5px;
+}
+.TypeSelectType>span:hover,.SymptomsSelectType>span:hover,.SymptomutfSelect>span:hover,.SymptomsSection a:hover{
+  color: white;
+  background-color: #FF9F00;
+}
+.TypeSelectTypeClick,.SymptomsSelectTypeClick,.SymptomutfSelectClick,.SymptomsSectionClick{
+  color: white;
+  background-color: #FF9F00;
+}
+.SymptomsSection a{
+  width: 160px;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis; 
+}
+.SymptomsSection>div{
+  display: none;
+}
+.result{
+  width: 150px;
+  height: 50px;
+  background-color: #FF9F00;
+  margin: 10px auto;
+  cursor: pointer;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  border-radius: 50px;
+}
+.resultCon{
+  width: 1140px;
+  margin: 0 auto;
+}
+.resultCon div{
+  margin: 20px 0;
+}
+.resultCon h1{
+  text-align: center;
+}
+.resultCon p{
+  font-size: 17px;
+  text-indent:2em;
+}

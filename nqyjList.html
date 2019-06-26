@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>农情预警列表</title>
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <link rel="stylesheet" href="./css/nqyjList.css">
+</head>
+
+<body>
+  <div class="header">
+    <div class="headerCon">
+      <span>您好，欢迎访问农情服务平台！</span>
+      <div id="view"></div>
+      <script id="loginRegist" type="text/html">
+        <span class="layui-breadcrumb breadcrumbHeader" lay-separator="|" style="visibility: visible;">
+          {{# if((userData.name == undefined) && (userData.user_name == undefined)){ }}
+            <a id="login" onclick="login()">登录</a>
+            <span lay-separator="">|</span>
+            <a id="register" onclick="regist()">注册</a>
+          {{# } else { }}
+            <span> {{ userData.name || userData.user_name }} </span>
+            <span lay-separator="">|</span>
+            <a id="userInfo" onclick="userInfo()">个人资料</a>
+            <span lay-separator="">|</span>
+            <a id="exit" onclick="exit()">退出登录</a>
+          {{# } }}
+        </span>
+      </script>
+    </div>
+    <div class="climate">
+      <div>
+        <!-- <span class="climateVerticalAlign"></span> -->
+        <img src="./img/logo.jpg" alt="">
+        <iframe id="iframe" src="http://i.tianqi.com/index.php?c=code&id=19&icon=1&temp=1&num=3" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbarCon">
+      <span class="layui-breadcrumb">
+        <a href="index.html">首页</a>
+        <a href="./NewProduct.html" target="view_window">新品推介</a>
+        <a href="./bchzzzd.html" target="view_window">病虫害诊断</a>
+        <a href="./tdlzQuery.html" target="view_window">土地流转</a>
+        <a id="navbarClick" href="./nqyjList.html" target="view_window">农情预警</a>
+        <a href="./ask.html" target="view_window">专家咨询</a>
+      </span>
+    </div>
+  </div>
+
+  <div id="yjxx2TplCon">
+
+      <script type="text/html" id="yjxx2Tpl">
+          {{# layui.each(yjxxData, function(index, item){ }}
+          <a class="layui-col-xs12 layui-col-sm12 layui-col-md12" href="{{ item.url }}" target="_blank">
+               <!--<i></i>--><span class="yjxx2Left layui-col-xs9 layui-col-sm9 layui-col-md9">{{ item.title }}</span>
+              <span class="yjxx2Right layui-col-xs3 layui-col-sm3 layui-col-md3">{{ item.publishTime.split(" ")[0] }}</span>
+          </a>
+          {{# }); }}
+      </script>
+  </div>
+
+  <div class="loadMore layui-col-xs1 layui-col-sm1 layui-col-md1" onclick="loadMore()">加载更多</div>
+
+  <script type="text/html" id="yjxx2Tpl1">
+      {{# layui.each(yjxxData, function(index, item){ }}
+      <a class="layui-col-xs12 layui-col-sm12 layui-col-md12" href="{{ item.url }}" target="_blank">
+          <!--<i></i>--><span class="yjxx2Left layui-col-xs9 layui-col-sm9 layui-col-md9">{{ item.title }}</span>
+          <span class="yjxx2Right layui-col-xs3 layui-col-sm3 layui-col-md3">{{ item.publishTime.split(" ")[0] }}</span>
+      </a>
+      {{# }); }}
+  </script>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+
+<script src="./js/logRegCom.js"></script>
+<script src="./js/nqyjList.js"></script>
+
+</html>

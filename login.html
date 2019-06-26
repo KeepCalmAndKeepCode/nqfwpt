@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,Chrome=1">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <title>登录</title>
+  <style>
+    #name,#phone{
+      width: 300px;
+    }
+    form{
+      margin-top: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <form class="layui-form" action="">
+    <div class="layui-form-item">
+      <label class="layui-form-label">用户名</label>
+      <div class="layui-input-block">
+        <input id="name" type="text" name="name" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+   
+    <div class="layui-form-item">
+      <label class="layui-form-label">密码</label>
+      <div class="layui-input-inline">
+        <input type="password" name="pass" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+      </div>
+      <div class="layui-form-mid layui-word-aux">登录密码，6 - 30 位之间，可包含数字字母及短横线及下划线	</div>
+    </div>
+    
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+<script src="./js/login.js"></script>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,Chrome=1">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <link rel="stylesheet" href="./css/userInfo.css">
+  <title>个人资料</title>
+  <style>
+    .layui-input{
+      width: 50%;
+    }
+    #user_name,#name,#phone,#email{
+      width: 300px;
+    }
+    #view{
+      float: right;
+    }
+    form{
+      padding-top: 15px;
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .userType{
+      height: 40px;
+      line-height: 40px;
+    }
+    #changePassLayer{
+      display: none !important;
+    }
+    #picCon>img,#picCon1>img{
+      width: 200px;
+      height: 200px;
+    }
+    #description{
+      min-height: 150px;
+    }
+    .layui-form-label{
+      width: 120px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="headerCon">
+      <span>您好，欢迎访问农情服务平台！</span>
+      <div id="view"></div>
+      <script id="loginRegist" type="text/html">
+        <span class="layui-breadcrumb breadcrumbHeader" lay-separator="|" style="visibility: visible;">
+          {{# if((userData.name == undefined) && (userData.user_name == undefined)){ }}
+          <a id="login" onclick="login()">登录</a>
+          <span lay-separator="">|</span>
+          <a id="register" onclick="regist()">注册</a>
+          {{# } else { }}
+          <span> {{ userData.name || userData.user_name }} </span>
+          <span lay-separator="">|</span>
+          <a id="userInfo" onclick="userInfo()">个人资料</a>
+          <span lay-separator="">|</span>
+          <a id="exit" onclick="exit()">退出登录</a>
+          {{# } }}
+        </span>
+      </script>
+    </div>
+    <div class="climate">
+      <div>
+        <!-- <span class="climateVerticalAlign"></span> -->
+        <img src="./img/logo.jpg" alt="">
+        <iframe id="iframe" src="http://i.tianqi.com/index.php?c=code&id=19&icon=1&temp=1&num=3" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbarCon">
+      <span class="layui-breadcrumb">
+        <a href="index.html" >首页</a>
+        <a href="./NewProduct.html" target="view_window">新品推介</a>
+        <a href="./bchzzzd.html" target="view_window">病虫害诊断</a>
+        <a onclick="queryTdlz()">土地流转</a>
+        <a href="./nqyjList.html" target="view_window">农情预警</a>
+        <a id="" href="./ask.html" target="view_window">专家咨询</a>
+      </span>
+    </div>
+  </div>
+  <form class="layui-form" action="">
+    <div class="layui-form-item">
+      <label class="layui-form-label">用户名</label>
+      <div class="layui-input-block">
+        <input id="user_name" type="text" name="name" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">手机号</label>
+      <div class="layui-input-block">
+        <input id="phone" type="number" name="phone" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" required lay-verify="required" placeholder="请输入手机号" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <div class="userType">
+        <label class="layui-form-label">用户类型</label>
+        <span id="userType">普通用户</span>
+      </div>
+      <div class="layui-input-block">
+        <input type="radio" id="radio1" name="user_type" value="0" title="普通用户">
+        <input type="radio" id="radio2" name="user_type" value="1" title="专家">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">头像</label>
+      <div class="layui-input-block">
+        <button type="button" class="layui-btn" id="test1">
+          <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+        <div id="picCon">
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">真实姓名</label>
+      <div class="layui-input-block">
+        <input id="name" type="text" name="real_name" required lay-verify="required" placeholder="请输入您的真实姓名" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">电子邮箱</label>
+      <div class="layui-input-block">
+        <input id="email" type="text" name="email" required lay-verify="required" placeholder="请输入邮箱" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">自我介绍</label>
+      <div class="layui-input-block">
+        <textarea id="description" type="text" name="description" required lay-verify="required" placeholder="自我介绍一下吧" autocomplete="off" class="layui-input"></textarea>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">我擅长的领域</label>
+      <div class="layui-input-block">
+        <input id="tag" type="text" name="tag" required lay-verify="required" placeholder='请输入您擅长的领域，用"，"隔开，如蔬菜病虫害，农作物栽培，农作物病虫害' autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">QQ号</label>
+      <div class="layui-input-block">
+        <input id="qq" type="number" name="qq" maxlength="" required lay-verify="required" placeholder="请输入QQ号" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">微信号</label>
+      <div class="layui-input-block">
+        <input id="wechat" type="text" name="wechat" required lay-verify="required" placeholder="请输入微信号" autocomplete="off"
+          class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">微信二维码</label>
+      <div class="layui-input-block">
+        <button type="button" class="layui-btn" id="test2">
+          <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+        <div id="picCon1">
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <!-- <a class="layui-btn" id="changePass" onclick="changePass()">修改密码</a> -->
+        <button class="layui-btn" lay-submit lay-filter="formDemo">提交修改</button>
+      </div>
+    </div>
+  </form>
+
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+
+<script src="./js/logRegCom.js"></script>
+<script src="./js/userInfo.js"></script>
+
+</html>

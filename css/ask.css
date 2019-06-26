@@ -1,0 +1,128 @@
+*{
+  box-sizing: border-box;
+}
+
+.header{
+  background-color: #fff;
+  /* height: 100px;
+  line-height: 100px; */
+  width: 100%;
+  min-width: 1200px;
+}
+.headerCon{
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+.headerCon>img{
+  width: 200px;
+}
+.breadcrumbHeader>span {
+  color: #333333 !important;
+  display: inline !important;
+  /*height: 100%;
+  line-height: 50px;
+  cursor: pointer; */
+}
+.breadcrumbHeader>a {
+  color: #333333 !important;
+}
+.headerCon .breadcrumbHeader{
+  /* height: 100px; */
+}
+.headerCon>span {
+  color: #999999;
+  height: 50px;
+  line-height: 50px;
+}
+#view{
+  float: right;
+}
+.breadcrumbHeader>a{
+  width: 56px !important;
+}
+.breadcrumbHeader>*{
+  visibility: visible !important;
+}
+.climateVerticalAlign{
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+}
+.climate>div{
+  width: 1200px;
+  margin: 0 auto;
+  height: 128px;
+  line-height: 128px;
+}
+.climate{
+  background-color: #f5f5f5;
+}
+.climate iframe{
+  width: 502px;
+  display: inline-block;
+  height: 128px;
+  float: right;
+}
+.climate>div>*{
+  display: inline-block;
+  vertical-align: middle;
+}
+.navbar{
+  width: 100%;
+  height: 50px;
+  background-color: #4075FF;
+  min-width: 1200px;
+}
+.navbarCon{
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  color: #fff;
+}
+.layui-breadcrumb{
+  height: 50px;
+  display: block;
+  line-height: 50px;
+  width: 100%;
+}
+.layui-breadcrumb>a{
+  width:16.66666%;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+.layui-breadcrumb>span{
+  display: none;
+}
+.navbarCon>.layui-breadcrumb>a{
+  color: #ffffff !important;
+}
+.navbarCon>div{
+  width: 159px;
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+.navbarCon>.layui-breadcrumb>a{
+  font-size: 17px;
+  font-weight: 400;
+}
+.navbarCon>.layui-breadcrumb>a:hover{
+  background-color: #fff;
+  color: #0A508B !important;
+}
+#navbarClick{
+  background-color: #fff;
+  color: #0A508B !important;
+}
+form{
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+form textarea{
+  height: 200px;
+}

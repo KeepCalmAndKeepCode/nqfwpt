@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <title>发布品种</title>
+  <style>
+    #picCon>img{
+      width: 150px;
+      height: 100px;
+      margin-right: 20px;
+    }
+    .layui-form-label{
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <form class="layui-form">
+    <div class="layui-form-item">
+      <label class="layui-form-label">品种名称</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">品种图片</label>
+      <div class="layui-input-block">
+
+        <button type="button" class="layui-btn" id="test1">
+          <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+        <div id="picCon">
+        </div>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">所属作物</label>
+      <div class="layui-input-block">
+        <select name="cat_name" lay-verify="required" id="sszw"></select>
+        <!-- <input type="number" name="cat_name" placeholder="" autocomplete="off" class="layui-input"> -->
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">登记编号</label>
+      <div class="layui-input-block">
+        <input type="number" name="approvalno" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">选引育单位</label>
+      <div class="layui-input-block">
+        <input type="number" name="breedunit" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">源品种</label>
+      <div class="layui-input-block">
+        <input type="text" name="source" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">特性</label>
+      <div class="layui-input-block">
+        <input type="text" name="features" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">产量介绍</label>
+      <div class="layui-input-block">
+        <input type="text" name="yieldresults" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">适宜种植地区</label>
+      <div class="layui-input-block">
+        <input type="number" name="suitablearea" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">培育年份</label>
+      <div class="layui-input-block">
+        <input type="number" name="vyear" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="fbpz">发布</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+<script src="./js/fbpz.js"></script>
+
+</html>

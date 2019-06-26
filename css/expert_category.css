@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: #fff;
+  /* height: 100px;
+  line-height: 100px; */
+  width: 100%;
+  min-width: 1200px;
+}
+
+.headerCon {
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.headerCon>img {
+  width: 200px;
+}
+
+.breadcrumbHeader>span {
+  color: #333333 !important;
+  display: inline !important;
+  /*height: 100%;
+  line-height: 50px;
+  cursor: pointer; */
+}
+
+.breadcrumbHeader>a {
+  color: #333333 !important;
+}
+
+.headerCon .breadcrumbHeader {
+  /* height: 100px; */
+}
+
+.headerCon>span {
+  color: #999999;
+  height: 50px;
+  line-height: 50px;
+}
+
+#view {
+  float: right;
+}
+
+.breadcrumbHeader>a {
+  width: 56px !important;
+}
+
+.breadcrumbHeader>* {
+  visibility: visible !important;
+}
+
+.climateVerticalAlign {
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+}
+
+.climate>div {
+  width: 1200px;
+  margin: 0 auto;
+  height: 128px;
+  line-height: 128px;
+}
+
+.climate {
+  background-color: #f5f5f5;
+}
+
+.climate iframe {
+  width: 502px;
+  display: inline-block;
+  height: 128px;
+  float: right;
+}
+
+.climate>div>* {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: #4075FF;
+  min-width: 1200px;
+}
+
+.navbarCon {
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  color: #fff;
+}
+
+.layui-breadcrumb {
+  height: 50px;
+  display: block;
+  line-height: 50px;
+  width: 100%;
+}
+
+.layui-breadcrumb>a {
+  width: 16.66666%;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.layui-breadcrumb>span {
+  display: none;
+}
+
+.navbarCon>.layui-breadcrumb>a {
+  color: #ffffff !important;
+}
+
+.navbarCon>div {
+  width: 159px;
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+
+.navbarCon>.layui-breadcrumb>a {
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.navbarCon>.layui-breadcrumb>a:hover {
+  background-color: #fff;
+  color: #0A508B !important;
+}
+
+#navbarClick {
+  background-color: #fff;
+  color: #0A508B !important;
+}
+
+form {
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+form textarea {
+  height: 200px;
+}
+
+body {
+  background: #f6f6f6;
+}
+
+.streamer {
+  padding-top: 20px;
+}
+
+.streamer img {
+  width: 100%;
+}
+
+.main {
+  height: 874px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.main .right {
+  height: 770px;
+  width: 960px;
+  float: right;
+}
+
+/* .main .right .list_right{height: 620px;width: 960px;} */
+.main .container .block {
+  height: 198px;
+  width: 960px;
+  border: 1px solid #ccc;
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.main .container .block .pic {
+  height: 114px;
+  width: 114px;
+  float: left;
+}
+
+.main .container .block .pic img {
+  height: 100%;
+  width: 100%;
+}
+
+.main .container .block .text {
+  padding-left: 24px;
+  float: left;
+  width: 800px;
+  position: relative;
+}
+
+.main .container .block .text p {
+  line-height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+}
+
+.main .container .block .text .name {
+  line-height: 35px;
+}
+
+.main .container .block .text h2 {
+  float: left;
+  margin-right: 10px;
+  font: 24px 800 arial, "微软雅黑";
+}
+
+.main .container .block .text img {
+  padding-right: 5px;
+}
+
+.main .container .block .text span {
+  line-height: 42px;
+  margin: 0 12px;
+}
+
+.main .container .block .text .name span {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.main .container .block .text .btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 112px;
+  height: 28px;
+}
+
+.main .container .block .text .btn [type="button"] {
+  width: 100%;
+  height: 100%;
+  background: #ff4d52;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.main .container .block .text .sp span {
+  position: absolute;
+  right: 0px;
+  color: #999;
+}
+
+.mainContainer .navContent {
+  height: 692px;
+  width: 178px;
+  background: #fff;
+  border: 1px solid #fff;
+  padding: 20px;
+  float: left;
+}
+
+.mainContainer .navContent span {
+  height: 50px;
+  border-bottom: 1px dotted #ccc;
+  display: block;
+  float: left;
+  width: 138px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mainContainer .container {
+  float: right;
+  height: 692px;
+  width: 990px;
+}
+
+.main .demo2 {
+  margin: 50px auto;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <link rel="stylesheet" href="./css/expert_category.css">
+
+  <title>提问题</title>
+  <style>
+    form{padding: 15px 15px 0 0;}
+    .layui-laypage{display: block;text-align: center;}
+    .layui-laypage a{margin: 0 10px;}
+    .layui-laypage .layui-laypage-curr{margin: 0 10px;}
+    .layui-laypage .layui-laypage-spr{padding: 0 12px; margin-top: 4px;}
+    .layui-laypage a, .layui-laypage span{line-height: 50px;height: 50px;padding:0 21px;border-radius: 5px;}
+    .layui-laypage-em{border-radius: 5px;}
+    /* em:nth-of-type(100){padding: 0 19px;} */
+    .layui-laypage>:last-child{padding: 0 18px;}
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="headerCon">
+      <span>您好，欢迎访问农情服务平台！</span>
+      <div id="view"></div>
+      <script id="loginRegist" type="text/html">
+        <span class="layui-breadcrumb breadcrumbHeader" lay-separator="|" style="visibility: visible;">
+          {{# if((userData.name == undefined) && (userData.user_name == undefined)){ }}
+            <a id="login" onclick="login()">登录</a>
+            <span lay-separator="">|</span>
+            <a id="register" onclick="regist()">注册</a>
+          {{# } else { }}
+            <span> {{ userData.name || userData.user_name }} </span>
+            <span lay-separator="">|</span>
+            <a id="userInfo" onclick="userInfo()">个人资料</a>
+            <span lay-separator="">|</span>
+            <a id="exit" onclick="exit()">退出登录</a>
+          {{# } }}
+      </span>
+    </script>
+    </div>
+    <div class="climate">
+      <div>
+        <img src="./img/logo.jpg" alt="">
+        <iframe id="iframe" src="http://i.tianqi.com/index.php?c=code&id=19&icon=1&temp=1&num=3" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbarCon">
+      <span class="layui-breadcrumb">
+        <a href="index.html">首页</a>
+        <a href="./NewProduct.html" target="view_window">新品推介</a>
+        <a href="./bchzzzd.html" target="view_window">病虫害诊断</a>
+        <a onclick="queryTdlz()">土地流转</a>
+        <a href="./nqyjList.html" target="view_window">农情预警</a>
+        <a id="navbarClick" href="./expert_category.html" target="view_window">专家咨询</a>
+      </span>
+    </div>
+  </div>
+  <div class="streamer">
+    <div class="">
+      <img src="img/streamer.png" alt="">
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="">
+      <div class="container01">
+        <div class="">
+          <div class="mainContainer">
+            <div class="navContent">
+              <div class="secContent" id="expertTypeTplCon">
+                <script type="text/html" id="expertTypeTpl">
+                  {{# layui.each(expertType, function(index, item){ }}
+                  <span class="book" href="#">{{ item.dict_label }}</span>
+                  {{# }); }}
+                </script>
+              </div>
+            </div>
+            <div class="container" id="expListTplCon">
+              <!-- <div class="block">
+                <div class="pic">
+                  <img src="img/banner.jpg" alt="">
+                </div>
+                <div class="text">
+                  <div class="name">
+                    <h2>皓一辉</h2><span>副主任医师</span><span>副教授</span><img src="img/phone.png" alt="">156XXXX2253 <img src="img/email1.png"
+                      alt="">156@qq.com
+                  </div>
+                  <p><img src="img/medal.png" alt="">擅长：为害柿树的主要病虫害,有柿角斑病、柿圆斑病、柿炭疽病及柿蒂虫、柿星尺蠖等 </p>
+                  <p><img src="img/character profile.png" alt="">简介：在高温高湿情况下容易发病在高温高湿情况下容易发病，(1)选用抗病品种。(2)减少菌源。收获后,集中掩埋田间遗留的病株。(3)加强田间管理。在拔节期和抽雄期追肥,注意及时中耕、排灌,提高植株抗病力。(4)化学防治。发病初期,用50%敌菌灵可湿性粉剂,或75%百菌清可湿性粉剂,或50%多菌灵可湿性粉剂,或40%异稻瘟净乳油以500倍液喷雾。</p>
+                  <a href="./ask.html" class="btn"><button type="button" name="button">向专家提问</button> </a>
+                  <a href="#" class="sp"><span>查看更多</span></a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="" style="clear:both;">
+    </div>
+    <div id="demo2" class="demo2">
+    </div>
+  </div>
+
+  <script type="text/html" id="expListTpl">
+    {{# layui.each(experts, function(index, item){ }}
+      <div class="block">
+        <div class="pic">
+          <img src="{{'http://zs.sjznm.gov.cn:50047' + item.avatar}}" alt="">
+        </div>
+        <div class="text">
+          <div class="name">
+            <h2>{{ item.real_name }}</h2>
+            <img src="img/phone.png" alt="">{{ item.phone }} 
+            <img src="img/email1.png" alt="">{{ item.email }} 
+          </div>
+          <p>
+            <img src="img/medal.png" alt="">
+            {{ item.tag }}
+          </p>
+          <p><img src="img/character profile.png" alt="">
+            {{ item.description }}
+          </p>
+          <a href="javascript:;" class="btn"><button type="button" name="button" onclick="skipAsk({{ item.user_id }})">向专家提问</button> </a>
+          <a href="javascript:;" class="sp"><span>查看更多</span> </a>
+        </div>
+      </div>
+    {{# }); }}
+  </script>
+</body>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+
+<script src="./js/logRegCom.js"></script>
+<script src="./js/expert_category.js"></script>
+<script type="text/javascript">
+
+</script>
+<script>
+  $(function () {
+    $(".container>div").hide();
+    $(".container>div:eq(0)").show();
+    $(".navContent a").click(function () {
+      var n = $(".navContent a").index(this);
+      $(".navContent a").index(this);
+      $(".container>div").hide();
+      $(".container>div:eq(" + n + ")").show();
+    })
+  })
+</script>
+
+</html>

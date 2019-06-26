@@ -1,0 +1,190 @@
+*{
+  box-sizing: border-box;
+}
+
+.header{
+  background-color: #fff;
+  /* height: 100px;
+  line-height: 100px; */
+  width: 100%;
+  min-width: 1200px;
+}
+.headerCon{
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+}
+.headerCon>img{
+  width: 200px;
+}
+.breadcrumbHeader>span {
+  color: #333333 !important;
+  display: inline !important;
+  /*height: 100%;
+  line-height: 50px;
+  cursor: pointer; */
+}
+.breadcrumbHeader>a {
+  color: #333333 !important;
+}
+.headerCon .breadcrumbHeader{
+  /* height: 100px; */
+}
+.headerCon>span {
+  color: #999999;
+  height: 50px;
+  line-height: 50px;
+}
+#view{
+  float: right;
+}
+.breadcrumbHeader>a{
+  width: 56px !important;
+}
+.breadcrumbHeader>*{
+  visibility: visible !important;
+}
+.climateVerticalAlign{
+  display: inline-block;
+  vertical-align: middle;
+  height: 150px;
+}
+.climate>div{
+  width: 1200px;
+  margin: 0 auto;
+  height: 128px;
+  line-height: 128px;
+}
+.climate{
+  background-color: #f5f5f5;
+}
+.climate iframe{
+  width: 502px;
+  display: inline-block;
+  height: 128px;
+  float: right;
+}
+.climate>div>*{
+  display: inline-block;
+  vertical-align: middle;
+}
+.navbar{
+  width: 100%;
+  height: 50px;
+  background-color: #4075FF;
+  min-width: 1200px;
+}
+.navbarCon{
+  width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  color: #fff;
+}
+.layui-breadcrumb{
+  height: 50px;
+  display: block;
+  line-height: 50px;
+  width: 100%;
+}
+.layui-breadcrumb>a{
+  width:16.66666%;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+}
+.layui-breadcrumb>span{
+  display: none;
+}
+.navbarCon>.layui-breadcrumb>a{
+  color: #ffffff !important;
+}
+.navbarCon>div{
+  width: 159px;
+  display: inline-block;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+.navbarCon>.layui-breadcrumb>a{
+  font-size: 17px;
+  font-weight: 400;
+}
+.navbarCon>.layui-breadcrumb>a:hover{
+  background-color: #fff;
+  color: #0A508B !important;
+}
+#navbarClick{
+  background-color: #fff;
+  color: #0A508B !important;
+}
+.brief_banners{height: 204px;box-shadow: 0 1px 1px #ccc;background: #fff; }
+.banners_contant{margin: 0 auto;width:1200px;position: relative;}
+.brief_banners .banners_contant .issues{padding-top: 26px;}
+.brief_banners .banners_contant .issues .o img{height: 100px;width: 100px;}
+.brief_banners .banners_contant .issues .question_r img{height: 32px;width: 32px;margin-right: 40px;}
+.brief_banners .banners_contant .issues .o{width: 100px;float: left;}
+.brief_banners .banners_contant .issues  span{display: block;text-align: center;font:800 20px "微软雅黑";}
+.brief_banners .banners_contant .issues  span:nth-of-type(1){margin: 10px 0 0 2px;}
+.brief_banners .banners_contant .issues  span:nth-of-type(2){font:normal 18px "微软雅黑";color: #666;}
+.brief_banners .banners_contant .issues .question{float: left;padding-left: 38px;/*padding-top: 10px;*/}
+.brief_banners .banners_contant .issues .question span{text-align: left;font:bold 24px "微软雅黑";}
+.brief_banners .banners_contant .issues .question span:nth-of-type(1){margin: 10px 0;}
+.brief_banners .banners_contant .issues .question span:nth-of-type(2){font:normal 20px "微软雅黑";color:#000;}
+.brief_banners .banners_contant .issues .question_r{width: 130px;height: 100%;}
+.brief_banners .banners_contant .issues .question_r,.brief_banners .banners_contant .issues .question_r .img{float: right;}
+.brief_banners .banners_contant .issues .question_r .editing_time{position: absolute;bottom: -153px;right:10px;}
+.brief_banners .banners_contant .issues .question_r .editing_time span{font:normal 16px "微软雅黑";color: #a2a9b9; }
+
+
+.main0{width:1200px;margin:0 auto;box-shadow: 1px 1px 5px #ccc;background: #fff;margin-top: 24px;/*position: relative;*/}
+.main .main0 .banners_contant .issues{padding-top: 34px;height: 120px;position: relative;}
+.main .main0 .banners_contant .issues .o img{height: 77px;width: 105px;}
+.main .main0 .banners_contant .issues .question_r img{height: 32px;width: 32px;margin-right: 40px;margin-top:-20px;}
+.main .main0 .banners_contant .issues .o{width: 100px;float: left;padding-left: 28px;}
+.main .main0 .banners_contant .issues  span{display: block;text-align: center;font:800 20px "微软雅黑";}
+.main .main0 .banners_contant .issues  span:nth-of-type(1){/*margin: 10px 0 0 2px;*/}
+.main .main0 .banners_contant .issues  span:nth-of-type(2){font:normal 18px "微软雅黑";color: #666;}
+.main .main0 .banners_contant .issues .question{float: left;padding-left: 66px;/*padding-top: 10px;*/}
+.main .main0 .banners_contant .issues .question span{text-align: left;font:bold 24px "微软雅黑";}
+.main .main0 .banners_contant .issues .question span:nth-of-type(1){/*margin: 10px 0;*/padding-bottom:10px;}
+.main .main0 .banners_contant .issues .question span:nth-of-type(2){font:normal 16px "微软雅黑";color:#a2a9b9;}
+.main .main0 .banners_contant .issues .question_r{/*width: 130px;*/height: 100%;}
+.main .main0 .banners_contant .issues .question_r,.main .main0 .banners_contant .issues .question_r .img{float: right;}
+.main .main0 .banners_contant .issues .question_r .editing_time {position: absolute;bottom: 30px;right:10px;}
+.main .main0 .banners_contant .issues .question_r .editing_time span{ font:normal 16px "微软雅黑";color: #a2a9b9; }
+.main .main1 {padding: 30px 50px 40px 50px;}
+.main .main1 p {margin-bottom: 40px;line-height: 26px;}
+.main .main1 .img{text-align: center;}
+
+.main2{width:1200px;margin: 20px auto 0;height: 100%;box-shadow: 1px 1px 5px #ccc;background: #fff;}
+.margin{}
+
+.main2 .margin .issues{padding-top: 26px;height: 95px;}
+.main2 .margin .issues .o{padding-left: 30px;width: 47px;float: left;}
+.main2 .margin .issues .o img{height: 47px;width: 47px;}
+.main2 .margin .issues .question_r img{height: 32px;width: 32px;margin-right: 40px;}
+.main2 .margin .issues span{display: block;text-align: center;}
+/* .main2 .margin .issues span:nth-of-type(1){margin: 10px 0 0 2px;} */
+.main2 .margin .issues  span:nth-of-type(2){font:normal 18px "微软雅黑";color: #666;}
+.main2 .margin .issues .question{float: left;padding-left: 48px;}
+.main2 .margin .issues .question span{text-align: left;}
+.main2 .margin .issues .question span:nth-of-type(1){font:400 18px "微软雅黑";}
+.main2 .margin .issues .question span:nth-of-type(2){font:normal 16px "微软雅黑";color: #666;}
+.main2 .margin .editor{position: relative;}
+.main2 .margin .editor button{position: absolute;bottom:30px;right:40px;height: 42px;width: 110px;background: #2291fd;border:none;border-radius: 5px;font-size: 18px;line-height: 42px;text-align: center;color: #fff;cursor: pointer;}
+
+.footer{
+  width: 100%;
+  height: 200px;
+  background-color: #666666;
+  display: table;
+  margin-top: 20px;
+} 
+.footer>div{
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  color: #999999;
+  line-height: 30px;
+}

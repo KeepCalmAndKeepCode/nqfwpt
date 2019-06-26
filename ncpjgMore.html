@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <title>更多农产品价格</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .header {
+      background-color: #fff;
+      height: 100px;
+      line-height: 100px;
+      width: 100%;
+      min-width: 1140px;
+    }
+
+    .headerCon {
+      width: 1140px;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    .headerCon>img {
+      width: 200px;
+    }
+
+    .headerCon>div {
+      float: right;
+      height: 100%;
+      line-height: 50px;
+      cursor: pointer;
+    }
+
+    .headerCon .breadcrumbHeader {
+      height: 100px;
+    }
+
+    .breadcrumbHeader>a {
+      width: 56px !important;
+    }
+
+    .breadcrumbHeader>* {
+      visibility: visible !important;
+    }
+
+    .navbar {
+      width: 100%;
+      height: 50px;
+      background-color: #faf9f9;
+      min-width: 1140px;
+    }
+
+    .navbarCon {
+      width: 1140px;
+      margin: 0 auto;
+      height: 100%;
+    }
+
+    .layui-breadcrumb {
+      height: 50px;
+      display: block;
+      line-height: 50px;
+      width: 100%;
+    }
+
+    .layui-breadcrumb>a {
+      width: 9%;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .navbarCon>div {
+      width: 159px;
+      display: inline-block;
+      text-align: center;
+      height: 50px;
+      line-height: 50px;
+      cursor: pointer;
+    }
+
+    .tltle {
+      width: 1140px;
+      margin: 0 auto;
+      height: 40px;
+      line-height: 40px;
+      color: #c62106;
+      background-color: #eee;
+      padding-left: 10px;
+    }
+
+    #ncpjgTplCon {
+      width: 1140px;
+      margin: 0 auto;
+    }
+
+    #ncpjgTplCon>div {
+      display: table;
+      width: 100%;
+      border-bottom: solid 1px #eeeeee;
+      line-height: 35px;
+      cursor: pointer;
+    }
+
+    #ncpjgTplCon>div>span {
+      display: table-cell;
+      text-align: center;
+    }
+
+    .ncpjgLeft {
+      width: 1000px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .ncpjgType {
+      width: 120px;
+    }
+
+    .ncpjgSite {
+      width: 893px;
+    }
+
+    .loadMore {
+      width: 100px;
+      height: 50px;
+      background-color: #eeeeee;
+      text-align: center;
+      line-height: 50px;
+      margin: 20px auto;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="headerCon">
+      <img src="./img/logo.jpg" alt="">
+      <div id="view"></div>
+      <script id="loginRegist" type="text/html">
+        <span class="layui-breadcrumb breadcrumbHeader" lay-separator="|" style="visibility: visible;">
+          {{# if((userData.name == undefined) && (userData.user_name == undefined)){ }}
+          <a id="login" onclick="login()">登录</a>
+          <span lay-separator="">|</span>
+          <a id="register" onclick="regist()">注册</a>
+          {{# } else { }}
+          <span> {{ userData.name || userData.user_name }} </span>
+          <span lay-separator="">|</span>
+          <a id="userInfo" onclick="userInfo()">个人资料</a>
+          <span lay-separator="">|</span>
+          <a id="exit" onclick="exit()">退出登录</a>
+          {{# } }}
+        </span>
+      </script>
+    </div>
+  </div>
+  <div class="navbar">
+    <div class="navbarCon">
+      <span class="layui-breadcrumb" lay-separator="|">
+        <a href="./index.html">首页</a>
+        <a onclick="fbpz()">发布品种</a>
+        <a href="">病虫害诊断</a>
+        <a onclick="queryTdlz()">土地流转</a>
+        <a onclick="yqyjfb()">舆情预警</a>
+        <a href="">专家咨询</a>
+      </span>
+    </div>
+  </div>
+  <div class="tltle">农产品价格</div>
+  <div id="ncpjgTplCon">
+    <script type="text/html" id="ncpjgTpl">
+      {{# layui.each(ncpjgData, function(index, item){ }}
+      <div onclick="ncpjgLayer( ncpjgData[{{index}}] )">
+        <span class="ncpjgType">{{item.Agricuture}}</span>
+        <span>{{item.AgriPrice}}</span>
+        <span class="ncpjgSite">{{item.AgriMarketName}}</span>
+      </div>
+      {{# }); }}
+    </script>
+  </div>
+  <div class="loadMore" onclick="loadMore()">加载更多</div>
+</body>
+<script type="text/html" id="ncpjgTpl1">
+  {{# layui.each(ncpjgData, function(index, item){ }}
+  <div onclick="ncpjgLayer( ncpjgData[{{index}}] )">
+    <span class="ncpjgType">{{item.Agricuture}}</span>
+    <span class="ncpjgSite">{{item.AgriMarketName}}</span>
+    <span>{{item.AgriPrice}}</span>
+  </div>
+  {{# }); }}
+</script>
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+
+<script src="./js/logRegCom.js"></script>
+<script src="./js/ncpjgMore.js"></script>
+<script>
+  layer.load();
+  var page = 2;
+  $.post({
+    url: "http://yn.zq.yn15.com/ExpertTec/YN_AgriMarketPrice/GetListByMarketId",
+    data: {
+      Key: "KEY69B5B31F-8355-4234-B9C6-B6AA1EF92EA7",
+      rows: 8,
+      page: 1,
+      sord: 'desc'
+    },
+    dataType: "JSONP",
+    success: function (res) {
+      ncpjgData = res.rows;
+      layer.closeAll('loading');
+      layui.use("laytpl", function () {
+        var laytpl = layui.laytpl;
+        console.log(document.getElementById("ncpjgTpl"));
+        var ncpjgTpl = document.getElementById("ncpjgTpl").innerHTML;
+        var ncpjgTplCon = document.getElementById("ncpjgTplCon");
+
+        laytpl(ncpjgTpl).render(ncpjgData, function (html) {
+          ncpjgTplCon.innerHTML = html;
+        });
+      })
+    }
+  })
+
+  function loadMore() {
+    layer.load();
+    page++
+    $.post({
+      url: "http://yn.zq.yn15.com/ExpertTec/YN_AgriMarketPrice/GetListByMarketId",
+      data: {
+        Key: "KEY69B5B31F-8355-4234-B9C6-B6AA1EF92EA7",
+        rows: 8,
+        page: page,
+        sord: 'desc'
+      },
+      dataType: "JSONP",
+      success: function (res) {
+        layer.closeAll('loading');
+        for (var i = 0; i < res.rows.length; i++) {
+          ncpjgData.push(res.rows[i]);
+        }
+        console.log(ncpjgData);
+        layui.use("laytpl", function () {
+          var laytpl = layui.laytpl;
+          console.log(document.getElementById("ncpjgTpl1"));
+
+          var ncpjgTpl1 = document.getElementById("ncpjgTpl1").innerHTML;
+          var ncpjgTplCon = document.getElementById("ncpjgTplCon");
+
+          laytpl(ncpjgTpl1).render(ncpjgData, function (html) {
+            ncpjgTplCon.innerHTML = html;
+          });
+        })
+      }
+    })
+  }
+
+  function ncpjgLayer(info) {
+    console.log(info);
+    var ncpjg = '';
+    ncpjg += "<div style = 'padding:10px;'>";
+    ncpjg += "<div>农产品: " + info.Agricuture + "</div>";
+    ncpjg += "<div>所属分类: " + info.AgriType + "</div>";
+    ncpjg += "<div>市场名称: " + info.AgriMarketName + "</div>";
+    ncpjg += "<div>价格: " + info.AgriPrice + "</div>";
+    ncpjg += "<div>来源: " + info.Source + "</div>";
+    ncpjg += "<div>创建时间: " + info.CreateDate + "</div>";
+    ncpjg += "</div>";
+    layer.open({
+      type: 1,
+      area: ["400px", "400px"],
+      shadeClose: true,
+      closeBtn: 2,
+      content: ncpjg
+    })
+  }
+</script>
+
+</html>

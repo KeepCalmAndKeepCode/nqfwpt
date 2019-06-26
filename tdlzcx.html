@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="./layui-v2.3.0/css/layui.css" />
+  <title>土地流转查询</title>
+  <style>
+    form {
+      padding-top: 15px;
+      padding-right: 15px;
+    }
+    .layui-input-block>span{
+      line-height: 38px;
+    }
+    #tdlzCxTplCon{
+      width: 550px;
+      height: 600px;
+      display: none;
+      margin: 0 auto;
+    }
+    #tdlzCxTplCon>div{
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <form class="layui-form">
+    <div class="layui-form-item">
+      <label class="layui-form-label">发布该信息的用户名</label>
+      <div class="layui-input-block">
+        <input type="text" name="name" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">所在区域邮编</label>
+      <div class="layui-input-block">
+        <input type="text" name="area_code" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">土地面积(平方米)</label>
+      <div class="layui-input-block">
+        <input type="number" name="mianji" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">土地最大面积(平方米)</label>
+      <div class="layui-input-block">
+        <input type="number" name="min_mianji" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">土地最小面积(平方米)</label>
+      <div class="layui-input-block">
+        <input type="number" name="max_mianji" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">土地类型</label>
+      <div class="layui-input-block">
+        <input type="text" name="type" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">流转类型</label>
+      <div class="layui-input-block">
+        <input type="text" name="deal_type" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">状态</label>
+      <div class="layui-input-block">
+        <input type="text" name="status" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">土地价格（元）</label>
+      <div class="layui-input-block">
+        <input type="number" name="price" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">最低价格（元）</label>
+      <div class="layui-input-block">
+        <input type="number" name="min_price" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">最高价格（元）</label>
+      <div class="layui-input-block">
+        <input type="number" name="max_price" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">土地产权期限（年）</label>
+      <div class="layui-input-block">
+        <input type="number" name="expire" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">最低土地产权期限（年）</label>
+      <div class="layui-input-block">
+        <input type="number" name="min_expire" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">最高土地产权期限（年）</label>
+      <div class="layui-input-block">
+        <input type="number" name="max_expire" placeholder="" autocomplete="off" class="layui-input">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="query">立即查询</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+  </form>
+  <div id="tdlzCxTplCon"></div>
+  <script id="tdlzCxTpl" type="text/html">
+    {{#  layui.each(data1, function(index, item){  }}
+      <div class="">
+        所在区域 : {{ item.area }} </br>
+        所在区域邮编 : {{ item.area_no }}</br>
+        土地面积（平方米）: {{ item.math_area }}</br>
+        价格（元）: {{ item.price }}</br>
+        土地类型 : {{ item.land_type }}</br>
+        流转类型 : {{ item.deal_type }}</br>
+        土地产权期限（年）: {{ item.area }}</br>
+        土地详情描述 : {{ item.land_description }}</br>
+        联系方式 : {{ item.contact }}</br>
+        状态 : {{ item.status }}</br>
+      </div>
+    {{#  });  }}
+  </script>
+</body>
+
+<script src="./js/jquery-3.3.1.min.js"></script>
+<script src="./layui-v2.3.0/layui.all.js"></script>
+<script src="./js/tdlzcx.js"></script>
+
+</html>
+
+<!-- <div class="layui-form-item">
+    <label class="layui-form-label">发布该信息的用户名</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">所在区域邮编</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">土地面积(平方米)</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">土地最大面积(平方米)</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">土地最小面积(平方米)</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">价格（元）</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">土地类型</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">流转类型</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">土地产权期限（年）</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">土地详情描述</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">联系方式</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div>
+
+  <div class="layui-form-item">
+    <label class="layui-form-label">状态</label>
+    <div class="layui-input-block">
+      <span class="layui-input" id="">666666666</span>
+    </div>
+  </div> -->
